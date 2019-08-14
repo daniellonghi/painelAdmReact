@@ -1,0 +1,13 @@
+#footer{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+}
+
+#footer .copyright{
+    font-weight: bold;
+    font-size: 13px;
+    color: rgb(59, 59, 59); 
+}
