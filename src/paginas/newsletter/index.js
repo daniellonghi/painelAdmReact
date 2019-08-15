@@ -1,8 +1,10 @@
 import React from 'react';
-import './styles.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
+import '../list-itens.css';
 
 const Newsletter = () => (
-    <div id="bem-vindo">
+    <div className="bem-vindo">
         <div className="flex-content-centered-align">
             <h1>Newsletter.</h1>
         </div>

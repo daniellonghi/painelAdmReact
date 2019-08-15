@@ -185,4 +185,5 @@
     width: 80%;
     margin: 23px 0px;
     background: #ccc;
+    overflow: hidden;
 }
