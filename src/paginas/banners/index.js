@@ -71,7 +71,8 @@ export default class Banners extends Component{
         }, 1000);
     }
 
-    addNew = () => {
+    addNew = (e) => {
+        e.preventDefault();
         setTimeout(() => {
             let showAddEdit = !this.state.showAddEdit;
             this.setState({showAddEdit});
