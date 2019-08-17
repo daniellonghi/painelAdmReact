@@ -7,11 +7,11 @@ export default class InputCheckboxTrueFalse extends Component{
                 <label htmlFor={this.props.nameInput}><i>{this.props.textInput}</i>: </label>
                 <div className="inner-div-radiobutton">
                     <div className="radio-button">
-                        <input type="radio" name={this.props.nameInput} value="yes"/>
+                        <input type="radio" name={this.props.nameInput} required value="true"/>
                         <label htmlFor={this.props.nameInput}>Yes</label>
                     </div>
                     <div className="radio-button">
-                        <input type="radio" name={this.props.nameInput} value="no"/>
+                        <input type="radio" name={this.props.nameInput} required value="false"/>
                         <label htmlFor={this.props.nameInput}>No</label>
                     </div>
                 </div>

@@ -71,12 +71,19 @@ export default class Banners extends Component{
         }, 1000);
     }
 
-    addNew = (e) => {
+    callForOverlayAddNew = (e) => {
         e.preventDefault();
         setTimeout(() => {
             let showAddEdit = !this.state.showAddEdit;
             this.setState({showAddEdit});
         }, 50);
+    }
+
+    callForOverlayAddNewRemove(e){
+        setTimeout(() => {
+            let showAddEdit = !this.state.showAddEdit;
+            this.setState({showAddEdit});
+        }, 100);
     }
 
     render(){
@@ -85,9 +92,9 @@ export default class Banners extends Component{
             <div className="bem-vindo">
                 {/* CALL FOR NEW COMPONENT TO ADD AS OVERLAY */}
                 {showAddEdit === true &&
-                    <BannerOverlay closeBannerOverlay={this.addNew.bind(this)}/>
+                    <BannerOverlay callForOverlayAddNewRemove={this.callForOverlayAddNewRemove.bind(this)}/>
                 }
-                <a href="#" onClick={this.addNew} className="add-new">
+                <a href="#" onClick={this.callForOverlayAddNew} className="add-new">
                     Add New
                     <FontAwesomeIcon icon={faPlusCircle} />
                 </a>

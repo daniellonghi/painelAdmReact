@@ -9,16 +9,18 @@ export default class InputFile extends Component{
         dropOver: false
     }
 
-    handleFileSelect = (evt) => {
-        evt.stopPropagation();
-        evt.preventDefault();
+    constructor(props){
+        super(props);
+    }
+
+    handleFileSelect = (e) => {
         this.changeDropOver(false);
 
-        var files = evt.dataTransfer.files;
+        var files = e;
 
         for (var i = 0, f; f = files[i]; i++) {
             let nameImage = escape(f.name);
-            if(f.type.indexOf("image") != -1){
+            if(f.type.indexOf("image") !== -1){
                 var reader = new FileReader();
                 reader.onload = function() {
                     document.getElementById("preview-image").src = reader.result;
@@ -45,8 +47,10 @@ export default class InputFile extends Component{
         this.changeDropOver(false);
     }
 
-    clearImageState = () => {
+    clearImageState = (e) => {
+        e.preventDefault();
         this.changeImageState(false);
+        document.getElementById("image_path").value = null;
     }
 
     changeImageState(hasImage = false){
@@ -64,7 +68,7 @@ export default class InputFile extends Component{
                 <div className="drag-and-drop-outter">
                     {hasImage === true &&
                     <div className="inner-banner-close">
-                        <a href="#" onClick={this.clearImageState} className="remove-img">
+                        <a href="#" onClick={this.clearImageState.bind(this)} className="remove-img">
                             Remove
                         </a>
                         <img id="preview-image" alt={nameImage}/>
@@ -72,13 +76,16 @@ export default class InputFile extends Component{
                     }
 
                     {hasImage === false &&
-                    <div id="drag-and-drop-zone" 
-                        onDrop={this.handleFileSelect} 
-                        onDragLeave={this.handleLeave} 
-                        onDragOver={this.handleOver}>
+                    <div id="drag-and-drop-zone">
                         {dropOver === true ? "Release the file." : `Drop a ${this.props.nameText} here`}
                     </div>
                     }
+                    <input type="file" 
+                        onDragLeave={this.handleLeave}
+                        onDragOver={this.handleOver} 
+                        onDrop={(e) => this.handleFileSelect(e.target.files)}
+                        onChange={(e) => this.handleFileSelect(e.target.files)}
+                        required id={this.props.nameInput} name={this.props.nameInput}></input>
                 </div>
             </div>
         );
